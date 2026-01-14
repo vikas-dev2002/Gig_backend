@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-router.post("/",  async (req, res) => {
+router.post("/",protect,  async (req, res) => {
   try {
     const { title, description, budget, category, skills, deadline, level, estimatedTime, minBidAmount, maxBidAmount } =
       req.body
@@ -61,7 +61,7 @@ router.post("/",  async (req, res) => {
 })
 
 // Get gig by ID
-router.get("/:id", async (req, res) => {
+router.get("/:id",protect, async (req, res) => {
   try {
     const gig = await Gig.findById(req.params.id).populate("ownerId", "name email avatar").populate("hiredBidId")
 

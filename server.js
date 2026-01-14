@@ -14,11 +14,12 @@ import Gig from "./models/Gig.js"
 dotenv.config()
 connectDB()
 
+const FRONTEND_URL = process.env.FRONTEND_URL
 const app = express()
 const httpServer = createServer(app)
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: FRONTEND_URL,
     credentials: true,
   },
 })
@@ -29,7 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: FRONTEND_URL,
     credentials: true,
   }),
 )

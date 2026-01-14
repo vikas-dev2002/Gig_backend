@@ -35,6 +35,7 @@ router.post("/register", async (req, res) => {
   sameSite: "none",      // Cross-domain allow
   maxAge: 7 * 24 * 60 * 60 * 1000,
 });
+console.log(cookie)
 
 
     res.status(201).json({

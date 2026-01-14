@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken"
 
 export const protect = (req, res, next) => {
   try {
+    console.log("Cookies received:", req.cookies);
     const token = req.cookies.token
   
     if (!token) {
