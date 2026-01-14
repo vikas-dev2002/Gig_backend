@@ -6,7 +6,7 @@ import Gig from "../models/Gig.js"
 const router = express.Router()
 
 // Submit a bid
-router.post("/", protect, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { gigId, message, bidAmount } = req.body
 
@@ -54,7 +54,7 @@ router.post("/", protect, async (req, res) => {
 })
 
 // Get all bids for a gig (Owner only)
-router.get("/:gigId", protect, async (req, res) => {
+router.get("/:gigId",  async (req, res) => {
   try {
     const gig = await Gig.findById(req.params.gigId)
 
@@ -78,7 +78,7 @@ router.get("/:gigId", protect, async (req, res) => {
 })
 
 // Hire a freelancer (Atomic operation with Transaction)
-router.patch("/:bidId/hire", protect, async (req, res) => {
+router.patch("/:bidId/hire",  async (req, res) => {
   const session = await Bid.startSession()
   session.startTransaction()
 

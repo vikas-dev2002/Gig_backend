@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-router.post("/", protect, async (req, res) => {
+router.post("/",  async (req, res) => {
   try {
     const { title, description, budget, category, skills, deadline, level, estimatedTime, minBidAmount, maxBidAmount } =
       req.body
